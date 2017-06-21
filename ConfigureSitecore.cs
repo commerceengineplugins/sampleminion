@@ -16,8 +16,6 @@ namespace Plugin.Sample.Minion
     using Sitecore.Framework.Pipelines.Definitions.Extensions;
     using Pipelines;
     using Pipelines.Blocks;
-    using Sitecore.Framework.Pipelines;
-    using Sitecore.Commerce.Plugin.Orders;
 
     /// <summary>
     /// The carts configure sitecore class.
@@ -35,9 +33,6 @@ namespace Plugin.Sample.Minion
             var assembly = Assembly.GetExecutingAssembly();
             services.RegisterAllPipelineBlocks(assembly);
 
-            // SitecorePipelinesConfigBuilder pipelinesConfigBuilder = pipelinesConfigBuilder1.AddPipeline<IGetCountryPipeline, GetCountryPipeline>
-            // ((Action<PipelineDefinition<IGetCountryPipeline>>)(c => c.Add<GetCountryBlock>()), section1, order1).AddPipeline<IGetCountriesPipeline, GetCountriesPipeline>();
-
             services.Sitecore().Pipelines(config => config
              .AddPipeline<IExportOrdersMinionPipeline, ExportOrdersMinionPipeline>(
                     configure =>
@@ -45,14 +40,6 @@ namespace Plugin.Sample.Minion
                             configure.Add<RetrieveOrderBlock>().Add<ExportOrderToFileBlock>();
                         })
             );
-
-            services.Sitecore().Pipelines(config => config
- .AddPipeline<ISamplePipeline, SamplePipeline>(
-        configure =>
-        {
-            configure.Add<SampleBlock>();
-        })
-);
 
             services.RegisterAllCommands(assembly);
         }

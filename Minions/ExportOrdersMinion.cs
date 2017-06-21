@@ -4,7 +4,6 @@ using Plugin.Sample.Minion.Pipelines;
 using Plugin.Sample.Minion.Pipelines.Arguments;
 using Sitecore.Commerce.Core;
 using Sitecore.Commerce.Plugin.Orders;
-using Sitecore.Framework.Pipelines;
 using System;
 using System.Threading.Tasks;
 
